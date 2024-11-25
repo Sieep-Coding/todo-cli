@@ -37,6 +37,7 @@ func (todos *Todos) validateIndex(index int) error {
 	return nil
 }
 
+// Remove from the todo list
 func (todos *Todos) delete(index int) error {
 	t := *todos
 	if err := t.validateIndex(index); err != nil {
@@ -46,6 +47,7 @@ func (todos *Todos) delete(index int) error {
 	return nil
 }
 
+// Toggle whether or not an item is completed
 func (todos *Todos) toggle(index int) error {
 	t := *todos
 	if err := t.validateIndex(index); err != nil {
@@ -58,5 +60,15 @@ func (todos *Todos) toggle(index int) error {
 	}
 	t[index].Completed = !isCompleted
 
+	return nil
+}
+
+// Edit an item
+func (todos *Todos) edit(index int, title string) error {
+	t := *todos
+	if err := t.validateIndex(index); err != nil {
+		return err
+	}
+	t[index].Title = title
 	return nil
 }
