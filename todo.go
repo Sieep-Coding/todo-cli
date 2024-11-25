@@ -3,7 +3,10 @@ package main
 import (
 	"errors"
 	"fmt"
+	"os"
 	"time"
+
+	"github.com/aquasecurity/table"
 )
 
 type Todo struct {
@@ -71,4 +74,8 @@ func (todos *Todos) edit(index int, title string) error {
 	}
 	t[index].Title = title
 	return nil
+}
+
+func (todos *Todo) print() {
+	table := table.New(os.Stdout)
 }
