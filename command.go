@@ -29,6 +29,7 @@ func NewCmdFlags() *CmdFlags {
 
 func (cf *CmdFlags) Execute(todos *Todos) {
 	switch {
+
 	case cf.List:
 		todos.print()
 
